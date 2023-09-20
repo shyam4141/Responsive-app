@@ -1,0 +1,44 @@
+/* styles.css */
+.login-container {
+    margin-top: 100px;
+  }
+  .login-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+  
+  .login-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .myLoginForm{
+	width: 90%;
+	margin: auto;
+}
+
+.align-text-center{
+    text-align: center;
+}
+
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+@media screen and (min-width: 768px) {
+	.myLoginForm{
+		width: 70%;
+	}
+  }

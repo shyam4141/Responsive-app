@@ -1,0 +1,102 @@
+.custom-navbar {
+    background-color: rgb(35, 122, 122);
+    height: 80px;
+    padding: 13px;
+}
+
+.user-name{
+    color: white;
+    margin-top: 15px;
+}
+
+.log-out{
+    bottom: 0;
+    margin: 20px;
+    position: absolute;
+}
+.navbar-container{
+    display: flex;
+}
+
+.role-area{
+    text-align: right;
+    padding-top: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+.menu-bars {
+    font-size: 2rem;
+    padding: 10px;
+    background-color: none;
+    display: flex;
+    align-items: center;
+}
+
+.menu-bar-close {
+    font-size: 2rem;
+    padding: 30px;
+    background-color: none;
+    display: flex;
+    align-items: center;
+
+}
+
+.nav-menu {
+    background-color: rgb(35, 122, 122);
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 850ms;
+}
+
+.nav-menu.active {
+    left: 0;
+    transition: 350ms;
+}
+
+.nav-test {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
+}
+
+.nav-test a {
+    text-decoration: none;
+    color: #f5f5f5;
+    font-size: 18px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+}
+
+.nav-test a:hover {
+
+    background-color: rgb(16, 58, 58);
+
+}
+.nav-menu-items {
+    width: 100%;
+}
+
+.navbar-toggle {
+    background-color: rgb(35, 122, 122);
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+span {
+    margin-left: 16px;
+}
