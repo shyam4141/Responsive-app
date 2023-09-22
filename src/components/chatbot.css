@@ -40,7 +40,7 @@
     border-radius: 4px;
   }
   
-  button {
+  .chat-btn {
     margin-left: 10px;
     padding: 5px 10px;
     border: none;
@@ -50,7 +50,7 @@
     cursor: pointer;
   }
   
-  button:hover {
+  .chat-btn:hover {
     background-color: #0056b3;
   }
   

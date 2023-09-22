@@ -47,7 +47,7 @@ function Navbar({ userName, backToLogin }) {
                                 <li key={index} className={item.cName}>
                                     <Link to={item.path} >
                                         {item.icon}
-                                        <span>{item.title}</span>
+                                        <span className='path'>{item.title}</span>
                                     </Link>
                                 </li>
                             )

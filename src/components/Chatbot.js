@@ -60,7 +60,7 @@ const ChatBot = () => {
           value={input}
           onChange={handleInputChange}
         />
-        <button onClick={handleSendMessage}>Send</button>
+        <button className="chat-btn" onClick={handleSendMessage}>Send</button>
       </div>
     </div>
   );

@@ -8,6 +8,9 @@ import Reports from './pages/Reports';
 import Login from './components/Login';
 import ChatBot from './components/Chatbot';
 import { AuthProvider } from './contexts/AuthContext';
+import Todos from './components/Todos';
+import DisplayTodos from './components/DisplayTodos';
+import Swal from 'sweetalert2';
 
 
 function App() {
@@ -21,7 +24,26 @@ function App() {
   };
 
   const promptToLogin = () => {
-    setLoggedIn(false);
+    Swal.fire({
+      icon: 'question',
+      title: 'Logging Out',
+      text: 'Are you sure you want to log out?',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+    }).then(result => {
+      if (result.value) {
+        Swal.fire({
+          timer: 1500,
+          showConfirmButton: false,
+          willOpen: () => {
+            Swal.showLoading();
+          },
+          willClose: () => {
+            setLoggedIn(false);
+          },
+        });
+      }
+    });
   };
 
   return (
@@ -35,7 +57,8 @@ function App() {
         <Route exact path="/" element={<Login onLogin={handleLogin} />} />
         <Route path='/home' element={
           loggedIn ? <div>
-            <Home />
+            <Todos />
+            <DisplayTodos />
           </div> : <Login />
         } />
         <Route path='/reports' element={

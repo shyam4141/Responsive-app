@@ -97,6 +97,6 @@
     justify-content: flex-end;
     align-items: center;
 }
-span {
+.path {
     margin-left: 16px;
 }

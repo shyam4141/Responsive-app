@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import "./login.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import { UseAuth } from '../contexts/AuthContext';
+import Swal from 'sweetalert2';
 
 
 const Login = ({ onLogin }) => {
@@ -63,10 +64,40 @@ const Login = ({ onLogin }) => {
             // Perform form submission logic
             if (name !== '' && email === 'admin@gmail.com') {
                 // return <Navbar visible={ navVisible } show={ setNavVisible } />
+                Swal.fire({
+                    timer: 1500,
+                    showConfirmButton: false,
+                    willOpen: () => {
+                      Swal.showLoading();
+                    },
+                    willClose: () => {
+            
+                      Swal.fire({
+                        icon: 'success',
+                        title: 'Successfully logged in!',
+                        showConfirmButton: false,
+                        timer: 1500,
+                      });
+                    },
+                  });
                 onLogin(name);
                 navigate('/home');
             } else {
-                alert('Please enter valid credentials');
+                Swal.fire({
+                    timer: 1500,
+                    showConfirmButton: false,
+                    willOpen: () => {
+                      Swal.showLoading();
+                    },
+                    willClose: () => {
+                      Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: 'Incorrect email or password.',
+                        showConfirmButton: true,
+                      });
+                    },
+                  });
             }
         }
     };
