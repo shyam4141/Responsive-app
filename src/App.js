@@ -8,9 +8,10 @@ import Reports from './pages/Reports';
 import Login from './components/Login';
 import ChatBot from './components/Chatbot';
 import { AuthProvider } from './contexts/AuthContext';
-import Todos from './components/Todos';
-import DisplayTodos from './components/DisplayTodos';
 import Swal from 'sweetalert2';
+import Contacts from './components/Contacts';
+import AddContact from './components/AddContact';
+import EditContact from './components/EditContact';
 
 
 function App() {
@@ -55,12 +56,25 @@ function App() {
       </div> : ''}
       <Routes>
         <Route exact path="/" element={<Login onLogin={handleLogin} />} />
-        <Route path='/home' element={
+        <Route path='/contact' element={
           loggedIn ? <div>
-            <Todos />
-            <DisplayTodos />
+           <Contacts />
+         
           </div> : <Login />
         } />
+          <Route path='/contacts/add' element={
+          loggedIn ? <div>
+           <AddContact />
+         
+          </div> : <Login />
+        } />
+          <Route path='/contacts/edit/:id' element={
+          loggedIn ? <div>
+           <EditContact />
+         
+          </div> : <Login />
+        } />
+
         <Route path='/reports' element={
           loggedIn ? <div>
             <Reports />

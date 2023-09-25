@@ -81,7 +81,7 @@ const Login = ({ onLogin }) => {
                     },
                   });
                 onLogin(name);
-                navigate('/home');
+                navigate('/contact');
             } else {
                 Swal.fire({
                     timer: 1500,
