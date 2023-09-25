@@ -27,6 +27,7 @@ const EditContact = () => {
     e.preventDefault();
 
     // const update_contact = Object.assign(contact, {
+    //   id:id,
     //   name: name,
     //   phone: phone,
     //   email: email,

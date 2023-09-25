@@ -26,7 +26,7 @@ const Contacts = () => {
   }, [selectAll]);
 
   return (
-    <div className="mt-3">
+    <div className="mt-3 table-responsive">
       {selectedContacts.length > 0 ? (
         <button
           className="btn btn-danger mb-3"
@@ -38,7 +38,7 @@ const Contacts = () => {
       <table className="table table-shadow">
         <thead className="bg-danger text-white ">
           <tr>
-            <th scope="col">
+            <th scope="col-1">
               <div className="custom-control custum-checkbox">
                 <input
                   id="selectAll"
@@ -53,17 +53,19 @@ const Contacts = () => {
                 ></label>
               </div>
             </th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>E-mail</th>
-            <th>Actions</th>
+            <th className="col-2">Name</th>
+            <th className="col-4">Phone</th>
+            <th className="col-2">E-mail</th>
+            <th className="col-3">Actions</th>
           </tr>
         </thead>
+        <tbody>
         <>
           {contacts.map((contact) => (
             <Contact contact={contact} key={contact.id} selectAll={selectAll} />
           ))}
         </>
+        </tbody>
       </table>
     </div>
   );

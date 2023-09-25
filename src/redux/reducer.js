@@ -269,7 +269,7 @@ export const contactReducer = (state = intialState, action) => {
       return {
         ...state,
         contacts: state.contacts.map((contact) =>
-          contact.id === action.payload.id ? action.payload : contact
+          contact.id == action.payload.id ? action.payload : contact
         ),
       };
     case DELETE_CONTACT:

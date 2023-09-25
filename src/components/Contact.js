@@ -18,12 +18,12 @@ const Contact = ({ contact, selectAll }) => {
             checked={selectAll}
             type="checkbox"
             className="custom-control-input"
+            readOnly={true}
           />
           <label className="custom-control-label"></label>
         </div>
       </td>
       <td>
-        {/* <Avatar className="mr-2" name={name} size="45" round={true} />  */}
         {name}
       </td>
       <td>{phone}</td>
@@ -31,7 +31,7 @@ const Contact = ({ contact, selectAll }) => {
 
       <td className="actions">
         <Link to={`/contacts/edit/${id}`}>
-          <span className="material-icons mr-2">edit</span>
+          <span className="material-icons" style={{marginRight:'10px'}}>edit</span>
         </Link>
 
         <Link to={""}>
