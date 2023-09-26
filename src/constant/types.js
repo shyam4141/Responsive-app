@@ -1,3 +1,5 @@
+export const SET_ROLE = "SET_ROLE";
+
 export const CREATE_CONTACT = "CREATE_CONTACT";
 
 // rxc

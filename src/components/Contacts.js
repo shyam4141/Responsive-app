@@ -13,8 +13,8 @@ const Contacts = () => {
   const [selectAll, setselectAll] = useState(false);
   const contacts = useSelector((state) => state.contacts);
   // This state reprent hole data
-  const selectedContacts = useSelector(
-    (state) => state.selectedContacts
+  const allContacts = useSelector(
+    (state) => state.contacts
   );
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const Contacts = () => {
 
   return (
     <div className="mt-3 table-responsive">
-      {selectedContacts.length > 0 ? (
+      {allContacts.length > 0 ? (
         <button
           className="btn btn-danger mb-3"
           onClick={() => dispatch(deleteAllContact())}
@@ -38,21 +38,6 @@ const Contacts = () => {
       <table className="table table-shadow">
         <thead className="bg-danger text-white ">
           <tr>
-            <th scope="col-1">
-              <div className="custom-control custum-checkbox">
-                <input
-                  id="selectAll"
-                  type="checkbox"
-                  className="custom-control-input"
-                  value={selectAll}
-                  onClick={() => setselectAll(!selectAll)}
-                />
-                <label
-                  htmlFor="selectAll"
-                  className="custom-control-label"
-                ></label>
-              </div>
-            </th>
             <th className="col-2">Name</th>
             <th className="col-4">Phone</th>
             <th className="col-2">E-mail</th>

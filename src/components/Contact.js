@@ -13,17 +13,6 @@ const Contact = ({ contact, selectAll }) => {
   return (
     <tr>
       <td>
-        <div className="custom-control custum-checkbox">
-          <input
-            checked={selectAll}
-            type="checkbox"
-            className="custom-control-input"
-            readOnly={true}
-          />
-          <label className="custom-control-label"></label>
-        </div>
-      </td>
-      <td>
         {name}
       </td>
       <td>{phone}</td>

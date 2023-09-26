@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import './App.css';
-import Home from './pages/Home';
 import Products from './pages/Product';
 import Reports from './pages/Reports';
 import Login from './components/Login';
 import ChatBot from './components/Chatbot';
-import { AuthProvider } from './contexts/AuthContext';
 import Swal from 'sweetalert2';
 import Contacts from './components/Contacts';
 import AddContact from './components/AddContact';
@@ -48,7 +46,7 @@ function App() {
   };
 
   return (
-    <AuthProvider>
+    
     <BrowserRouter>
       {/* <Navbar /> */}
       {loggedIn ? <div>
@@ -109,7 +107,7 @@ function App() {
         } />
       </Routes>
     </BrowserRouter>
-    </AuthProvider>
+ 
   );
 }
 

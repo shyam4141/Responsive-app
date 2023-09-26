@@ -6,9 +6,19 @@ import {
     SELECT_CONTACT,
     CLEAR_CONTACT,
     DELETE_SELECTED_CONTACTS,
+    SET_ROLE,
   } from "../../constant/types";
   
   // Action
+  export const setRole = (role) => {
+    return {
+      type: SET_ROLE,
+      payload: role,
+    };
+  };
+
+
+
   export const addContact = (contact) => {
     return {
       type: CREATE_CONTACT,

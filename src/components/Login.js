@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./login.css";
 import 'bootstrap/dist/css/bootstrap.css';
-import { UseAuth } from '../contexts/AuthContext';
+
 import Swal from 'sweetalert2';
+import { setRole } from '../redux/actions/contactAction';
+import { useDispatch } from "react-redux";
 
 
 const Login = ({ onLogin }) => {
@@ -12,7 +14,8 @@ const Login = ({ onLogin }) => {
     const [email, setEmail] = useState('sai@gmail.com');
     const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
-    const { setUserRole } = UseAuth();
+ 
+    const dispatch = useDispatch();
     const [roles, setRoles] = useState([
         {
             'roleName': 'Admin'
@@ -24,17 +27,18 @@ const Login = ({ onLogin }) => {
 
     const navigate = useNavigate();
 
-    const [selectedValue, setSelectedValue] = useState('');
 
  
 
     useEffect(() => {
+        dispatch(setRole('Admin'));
         navigate('/')
     }, [])
 
     const handleSelectChange = (event) => {
-        setSelectedValue(event.target.value);
-        setUserRole(event.target.value);
+        // setSelectedValue(event.target.value);
+        // setUserRole(event.target.value);
+        dispatch(setRole(event.target.value));
       };
 
     const handleSubmit = async (e) => {

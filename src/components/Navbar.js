@@ -5,22 +5,22 @@ import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
-import { UseAuth } from '../contexts/AuthContext';
+import { useSelector } from "react-redux";
+
 
 function Navbar({ userName, backToLogin }) {
 
     const [sidebar, setSidebar] = useState(false)
     const showSidebar = () => setSidebar(!sidebar);
-    const { userRole } = UseAuth();
+    const role = useSelector((state) => state.role);
     const [sidebarLinks, setSidebarLinks] = useState(SidebarData);
 
     useEffect(() => {
-        console.log("get user role in admin", userRole)
-        if(userRole === 'Guest'){
+        if(role === 'Guest'){
             const filteredArr = sidebarLinks.filter(item => item.title !== 'Admin page' );
             setSidebarLinks(filteredArr);
         }
-      }, [userRole])
+      }, [role])
 
     return (
         <>
@@ -34,7 +34,7 @@ function Navbar({ userName, backToLogin }) {
                     </div>
               
                     <div className='col-6 role-area'>
-                        Role: {userRole}
+                        Role: {role}
                     </div>
                 </div>
                     

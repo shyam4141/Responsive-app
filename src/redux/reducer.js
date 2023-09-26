@@ -6,9 +6,11 @@ import {
   SELECT_CONTACT,
   CLEAR_CONTACT,
   DELETE_SELECTED_CONTACTS,
+  SET_ROLE,
 } from "../constant/types";
 
 const intialState = {
+  role:'',
   contacts: [
     {
       id: 1,
@@ -247,6 +249,12 @@ const intialState = {
 
 export const contactReducer = (state = intialState, action) => {
   switch (action.type) {
+
+    case SET_ROLE:
+      return {
+        ...state,
+        role: action.payload,
+      };
     case CREATE_CONTACT:
       return {
         ...state,
