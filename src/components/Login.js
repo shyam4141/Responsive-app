@@ -8,8 +8,8 @@ import Swal from 'sweetalert2';
 
 const Login = ({ onLogin }) => {
 
-    const [name, setName] = useState('admin');
-    const [email, setEmail] = useState('admin@gmail.com');
+    const [name, setName] = useState('Sai');
+    const [email, setEmail] = useState('sai@gmail.com');
     const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
     const { setUserRole } = UseAuth();
@@ -62,7 +62,7 @@ const Login = ({ onLogin }) => {
 
         if (isValid) {
             // Perform form submission logic
-            if (name !== '' && email === 'admin@gmail.com') {
+            if (name !== '' && email === 'sai@gmail.com') {
                 // return <Navbar visible={ navVisible } show={ setNavVisible } />
                 Swal.fire({
                     timer: 1500,

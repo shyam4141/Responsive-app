@@ -12,9 +12,14 @@ function Navbar({ userName, backToLogin }) {
     const [sidebar, setSidebar] = useState(false)
     const showSidebar = () => setSidebar(!sidebar);
     const { userRole } = UseAuth();
+    const [sidebarLinks, setSidebarLinks] = useState(SidebarData);
 
     useEffect(() => {
         console.log("get user role in admin", userRole)
+        if(userRole === 'Guest'){
+            const filteredArr = sidebarLinks.filter(item => item.title !== 'Admin page' );
+            setSidebarLinks(filteredArr);
+        }
       }, [userRole])
 
     return (
@@ -42,7 +47,7 @@ function Navbar({ userName, backToLogin }) {
                                 <AiIcons.AiOutlineClose />
                             </Link>
                         </li>
-                        {SidebarData.map((item, index) => {
+                        {sidebarLinks.map((item, index) => {
                             return (
                                 <li key={index} className={item.cName}>
                                     <Link to={item.path} >

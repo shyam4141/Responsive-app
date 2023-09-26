@@ -25,7 +25,7 @@ const intialState = {
           lng: "81.1496",
         },
       },
-      phone: "1-770-736-8031 x56442",
+      phone: "9299883874",
       website: "hildegard.org",
       company: {
         name: "Romaguera-Crona",
@@ -48,7 +48,7 @@ const intialState = {
           lng: "-34.4618",
         },
       },
-      phone: "010-692-6593 x09125",
+      phone: "9298983874",
       website: "anastasia.net",
       company: {
         name: "Deckow-Crist",
@@ -71,7 +71,7 @@ const intialState = {
           lng: "-47.0653",
         },
       },
-      phone: "1-463-123-4447",
+      phone: "8399883874",
       website: "ramiro.info",
       company: {
         name: "Romaguera-Jacobson",
@@ -94,7 +94,7 @@ const intialState = {
           lng: "-164.2990",
         },
       },
-      phone: "493-170-9623 x156",
+      phone: "9299883555",
       website: "kale.biz",
       company: {
         name: "Robel-Corkery",
@@ -117,7 +117,7 @@ const intialState = {
           lng: "62.5342",
         },
       },
-      phone: "(254)954-1289",
+      phone: "9294483874",
       website: "demarco.info",
       company: {
         name: "Keebler LLC",
@@ -140,7 +140,7 @@ const intialState = {
           lng: "71.7478",
         },
       },
-      phone: "1-477-935-8478 x6430",
+      phone: "9299777874",
       website: "ola.org",
       company: {
         name: "Considine-Lockman",
@@ -163,7 +163,7 @@ const intialState = {
           lng: "21.8984",
         },
       },
-      phone: "210.067.6132",
+      phone: "9291183874",
       website: "elvis.io",
       company: {
         name: "Johns Group",
@@ -186,7 +186,7 @@ const intialState = {
           lng: "-120.7677",
         },
       },
-      phone: "586.493.6943 x140",
+      phone: "9299881114",
       website: "jacynthe.com",
       company: {
         name: "Abernathy Group",
@@ -209,7 +209,7 @@ const intialState = {
           lng: "-168.8889",
         },
       },
-      phone: "(775)976-6794 x41206",
+      phone: "9222883874",
       website: "conrad.com",
       company: {
         name: "Yost and Sons",
@@ -232,7 +232,7 @@ const intialState = {
           lng: "57.2232",
         },
       },
-      phone: "024-648-3804",
+      phone: "9299789874",
       website: "ambrose.net",
       company: {
         name: "Hoeger LLC",

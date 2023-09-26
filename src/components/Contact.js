@@ -1,7 +1,7 @@
 import React from "react";
 // import Avatar from "react-avatar";
 import { useDispatch } from "react-redux";
-
+import * as IoIcons from 'react-icons/io';
 import { Link } from "react-router-dom";
 import { deleteContact } from "../redux/actions/contactAction";
 
@@ -31,7 +31,7 @@ const Contact = ({ contact, selectAll }) => {
 
       <td className="actions">
         <Link to={`/contacts/edit/${id}`}>
-          <span className="material-icons" style={{marginRight:'10px'}}>edit</span>
+          <span className="material-icons" style={{marginRight:'10px'}}><IoIcons.IoMdCreate /></span>
         </Link>
 
         <Link to={""}>
@@ -39,7 +39,7 @@ const Contact = ({ contact, selectAll }) => {
             className="material-icons  text-danger"
             onClick={() => dispatch(deleteContact(id))}
           >
-            remove
+            <IoIcons.IoIosRemoveCircleOutline />
           </span>
         </Link>
       </td>

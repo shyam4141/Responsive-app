@@ -62,6 +62,18 @@ function App() {
          
           </div> : <Login />
         } />
+        <Route path='/reports' element={
+          loggedIn ? <div>
+           <Reports />
+         
+          </div> : <Login />
+        } />
+        <Route path='/products' element={
+          loggedIn ? <div>
+           <Products />
+         
+          </div> : <Login />
+        } />
           <Route path='/contacts/add' element={
           loggedIn ? <div>
            <AddContact />
@@ -75,19 +87,24 @@ function App() {
           </div> : <Login />
         } />
 
-        <Route path='/reports' element={
-          loggedIn ? <div>
-            <Reports />
+        <Route path='/admin' element={
+          loggedIn ? <div style={{textAlign:'center'}}>
+           <h3>Admin page accessible only to admins</h3>
           </div> : <Login />
         } />
-        <Route path='/products' element={
-          loggedIn ? <div>
-            <Products />
+        <Route path='/guest' element={
+          loggedIn ? <div style={{textAlign:'center'}}>
+            <h3>Accessible to all</h3>
           </div> : <Login />
         } />
          <Route path='/chatbot' element={
           loggedIn ? <div>
             <ChatBot />
+          </div> : <Login />
+        } />
+          <Route path='/feedback' element={
+          loggedIn ? <div style={{textAlign:'center'}}>
+             <h3>Feedback template here</h3>
           </div> : <Login />
         } />
       </Routes>
