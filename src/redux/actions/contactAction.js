@@ -7,12 +7,20 @@ import {
     CLEAR_CONTACT,
     DELETE_SELECTED_CONTACTS,
     SET_ROLE,
+    FEEDBACK_SUBMIT,
   } from "../../constant/types";
   
   // Action
   export const setRole = (role) => {
     return {
       type: SET_ROLE,
+      payload: role,
+    };
+  };
+
+  export const setFeedback = (role) => {
+    return {
+      type: FEEDBACK_SUBMIT,
       payload: role,
     };
   };

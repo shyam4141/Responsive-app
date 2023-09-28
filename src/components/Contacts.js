@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Contact from "./Contact";
+import { useNavigate } from "react-router-dom";
 
 import {
   selectAllcontact,
@@ -10,12 +11,17 @@ import {
 
 const Contacts = () => {
   const dispatch = useDispatch();
+  const navigate =  useNavigate();
   const [selectAll, setselectAll] = useState(false);
   const contacts = useSelector((state) => state.contacts);
   // This state reprent hole data
   const allContacts = useSelector(
     (state) => state.contacts
   );
+
+  function handleAddContact(){
+    navigate('/contacts/add');
+  }
 
   useEffect(() => {
     if (selectAll) {
@@ -27,6 +33,10 @@ const Contacts = () => {
 
   return (
     <div className="mt-3 table-responsive">
+      <div style={{textAlign:'end'}}>
+      <button className="btn btn-primary" onClick={handleAddContact}>Add contact</button>
+      </div>
+      
       {allContacts.length > 0 ? (
         <button
           className="btn btn-danger mb-3"

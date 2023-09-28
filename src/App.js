@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 import Contacts from './components/Contacts';
 import AddContact from './components/AddContact';
 import EditContact from './components/EditContact';
+import FeedbackForm from './components/FeedbackForm';
 
 
 function App() {
@@ -46,7 +47,7 @@ function App() {
   };
 
   return (
-    
+
     <BrowserRouter>
       {/* <Navbar /> */}
       {loggedIn ? <div>
@@ -56,58 +57,58 @@ function App() {
         <Route exact path="/" element={<Login onLogin={handleLogin} />} />
         <Route path='/contact' element={
           loggedIn ? <div>
-           <Contacts />
-         
+            <Contacts />
+
           </div> : <Login />
         } />
         <Route path='/reports' element={
           loggedIn ? <div>
-           <Reports />
-         
+            <Reports />
+
           </div> : <Login />
         } />
         <Route path='/products' element={
           loggedIn ? <div>
-           <Products />
-         
+            <Products />
+
           </div> : <Login />
         } />
-          <Route path='/contacts/add' element={
+        <Route path='/contacts/add' element={
           loggedIn ? <div>
-           <AddContact />
-         
+            <AddContact />
+
           </div> : <Login />
         } />
-          <Route path='/contacts/edit/:id' element={
+        <Route path='/contacts/edit/:id' element={
           loggedIn ? <div>
-           <EditContact />
-         
+            <EditContact />
+
           </div> : <Login />
         } />
 
         <Route path='/admin' element={
-          loggedIn ? <div style={{textAlign:'center'}}>
-           <h3>Admin page accessible only to admins</h3>
+          loggedIn ? <div style={{ textAlign: 'center' }}>
+            <h3>Admin page accessible only to admins</h3>
           </div> : <Login />
         } />
         <Route path='/guest' element={
-          loggedIn ? <div style={{textAlign:'center'}}>
+          loggedIn ? <div style={{ textAlign: 'center' }}>
             <h3>Accessible to all</h3>
           </div> : <Login />
         } />
-         <Route path='/chatbot' element={
+        <Route path='/chatbot' element={
           loggedIn ? <div>
             <ChatBot />
           </div> : <Login />
         } />
-          <Route path='/feedback' element={
-          loggedIn ? <div style={{textAlign:'center'}}>
-             <h3>Feedback template here</h3>
+        <Route path='/feedback' element={
+          loggedIn ? <div >
+            <FeedbackForm />
           </div> : <Login />
         } />
       </Routes>
     </BrowserRouter>
- 
+
   );
 }
 

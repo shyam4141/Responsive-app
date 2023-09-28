@@ -7,6 +7,7 @@ import {
   CLEAR_CONTACT,
   DELETE_SELECTED_CONTACTS,
   SET_ROLE,
+  FEEDBACK_SUBMIT
 } from "../constant/types";
 
 const intialState = {
@@ -245,6 +246,7 @@ const intialState = {
   ],
   contact: null,
   selectedContacts: [],
+  feedbackDetails:[]
 };
 
 export const contactReducer = (state = intialState, action) => {
@@ -260,6 +262,12 @@ export const contactReducer = (state = intialState, action) => {
         ...state,
         contacts: [action.payload, ...state.contacts],
       };
+
+      case FEEDBACK_SUBMIT:
+        return {
+          ...state,
+          feedbackDetails : [action.payload, ...state.feedbackDetails],
+        };
 
     case GET_CONTACT:
       let arr = state.contacts.filter(

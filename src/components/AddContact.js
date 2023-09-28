@@ -24,15 +24,16 @@ const AddContact = () => {
       email: email,
     };
     dispatch(addContact(new_contact));
-   navigate('/');
+   navigate('/contact');
   };
 
   return (
-    <div className="card border-0m  shadow">
+    <div className="card border-0m mt-3 shadow" style={{position:'revert'}}>
       <div className="card-header">Add a Contact</div>
       <div className="card-body">
         <form onSubmit={(e) => craeteContact(e)}>
           <div className="form-group">
+          <label>Name</label>
             <input
               type="text"
               className="form-control"
@@ -43,6 +44,7 @@ const AddContact = () => {
           </div>
 
           <div className="form-group">
+          <label>Phone</label>
             <input
               type="text"
               className="form-control"
@@ -53,6 +55,7 @@ const AddContact = () => {
           </div>
 
           <div className="form-group">
+          <label>Email</label>
             <input
               type="email"
               className="form-control"
@@ -61,8 +64,8 @@ const AddContact = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <button className="btn btn-primary" type="submit">
-            Create Contact
+          <button className="btn btn-primary mt-3" type="submit">
+            Add Contact
           </button>
         </form>
       </div>
