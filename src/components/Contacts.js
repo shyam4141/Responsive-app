@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Contact from "./Contact";
 import { useNavigate } from "react-router-dom";
+import './contact.css'
 
 import {
   selectAllcontact,
@@ -45,7 +46,7 @@ const Contacts = () => {
           Delete all
         </button>
       ) : null}
-      <table className="table table-shadow">
+      <table className="table table-shadow contact_table">
         <thead className="bg-danger text-white ">
           <tr>
             <th className="col-2">Name</th>
