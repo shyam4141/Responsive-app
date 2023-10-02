@@ -46,7 +46,7 @@ const AddContact = () => {
           <div className="form-group">
           <label>Phone</label>
             <input
-              type="text"
+              type="number"
               className="form-control"
               placeholder="Enter your Phone Number"
               value={phone}
