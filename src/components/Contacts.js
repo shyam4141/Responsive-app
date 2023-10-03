@@ -33,7 +33,7 @@ const Contacts = () => {
   }, [selectAll]);
 
   return (
-    <div className="mt-3 table-responsive">
+    <div className="mt-3">
       <div style={{textAlign:'end'}}>
       <button className="btn btn-primary" onClick={handleAddContact}>Add contact</button>
       </div>
@@ -46,13 +46,14 @@ const Contacts = () => {
           Delete all
         </button>
       ) : null}
-      <table className="table table-shadow contact_table">
+      <table className="table table-responsive-sm table-bordered table-striped contact_table">
+      <caption>List of contacts</caption>
         <thead className="bg-danger text-white ">
           <tr>
-            <th className="col-2">Name</th>
-            <th className="col-4">Phone</th>
-            <th className="col-2">E-mail</th>
-            <th className="col-3">Actions</th>
+            <th >Name</th>
+            <th >Phone</th>
+            <th >E-mail</th>
+            <th >Actions</th>
           </tr>
         </thead>
         <tbody>

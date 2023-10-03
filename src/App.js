@@ -88,12 +88,12 @@ function App() {
 
         <Route path='/admin' element={
           loggedIn ? <div style={{ textAlign: 'center' }}>
-            <h3>Admin page accessible only to admins</h3>
+            <h3 className='mt-3'>Admin page accessible only to admins</h3>
           </div> : <Login />
         } />
         <Route path='/guest' element={
           loggedIn ? <div style={{ textAlign: 'center' }}>
-            <h3>Accessible to all</h3>
+            <h3 className='mt-3'>Accessible to all</h3>
           </div> : <Login />
         } />
         <Route path='/chatbot' element={

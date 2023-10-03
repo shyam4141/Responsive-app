@@ -1,5 +1,7 @@
-.contact_table{
-    overflow-y:scroll;
-    height:auto;
-    display:block;
+@media screen and (max-width: 575px) {
+    .contact_table{
+        overflow-y:scroll;
+        height:auto;
+        display:block;
+    }
 }
