@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import './App.css';
 import Products from './pages/Product';
-import Reports from './pages/Reports';
 import Login from './components/Login';
 import ChatBot from './components/Chatbot';
 import Swal from 'sweetalert2';
@@ -11,6 +10,8 @@ import Contacts from './components/Contacts';
 import AddContact from './components/AddContact';
 import EditContact from './components/EditContact';
 import FeedbackForm from './components/FeedbackForm';
+import { GoogleMap } from 'react-google-maps';
+import ViewMap from './components/ViewMap';
 
 
 function App() {
@@ -61,10 +62,10 @@ function App() {
 
           </div> : <Login />
         } />
-        <Route path='/reports' element={
-          loggedIn ? <div>
-            <Reports />
 
+        <Route path='/maps' element={
+          loggedIn ? <div style={{position:'revert'}}>
+            <ViewMap  />
           </div> : <Login />
         } />
         <Route path='/products' element={

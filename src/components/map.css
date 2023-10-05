@@ -1,0 +1,9 @@
+.map_close_btn{
+    border: none;
+    font-size: 20px;
+}
+
+.custom-dialog{
+    margin-top: 160px;
+    z-index: 1;
+}

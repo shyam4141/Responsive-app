@@ -19,6 +19,13 @@ export const SidebarData = [
 
     },
     {
+        title: 'Google maps',
+        path: '/maps',
+        icon: <IoIcons.IoMdMap />,
+        cName: 'nav-test'
+
+    },
+    {
         title: 'Contacts',
         path: '/contact',
         icon: <IoIcons.IoIosContact />,
@@ -29,13 +36,6 @@ export const SidebarData = [
         title: 'Chatbot',
         path: '/chatbot',
         icon: <FaIcons.FaEnvelopeOpenText />,
-        cName: 'nav-test'
-
-    },
-    {
-        title: 'Reports',
-        path: '/reports',
-        icon: <IoIcons.IoIosPaper/>,
         cName: 'nav-test'
 
     },
