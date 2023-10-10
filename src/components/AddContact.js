@@ -39,6 +39,7 @@ const AddContact = () => {
               className="form-control"
               placeholder="Enter your name"
               value={name}
+              required
               onChange={(e) => setName(e.target.value)}
             />
           </div>
@@ -50,6 +51,7 @@ const AddContact = () => {
               className="form-control"
               placeholder="Enter your Phone Number"
               value={phone}
+              required
               onChange={(e) => setPhone(e.target.value)}
             />
           </div>
@@ -61,6 +63,7 @@ const AddContact = () => {
               className="form-control"
               placeholder="Enter your Email Address"
               value={email}
+              required
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
