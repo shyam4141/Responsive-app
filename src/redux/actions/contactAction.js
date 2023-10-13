@@ -8,6 +8,8 @@ import {
     DELETE_SELECTED_CONTACTS,
     SET_ROLE,
     FEEDBACK_SUBMIT,
+    SET_LATITUDE,
+    SET_LONGITUDE
   } from "../../constant/types";
   
   // Action
@@ -21,6 +23,20 @@ import {
   export const setFeedback = (role) => {
     return {
       type: FEEDBACK_SUBMIT,
+      payload: role,
+    };
+  };
+
+  export const setLatitude = (role) => {
+    return {
+      type: SET_LATITUDE,
+      payload: role,
+    };
+  };
+
+  export const setLongitude = (role) => {
+    return {
+      type: SET_LONGITUDE,
       payload: role,
     };
   };

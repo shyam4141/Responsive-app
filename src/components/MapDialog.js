@@ -7,26 +7,6 @@ function MapDialog({ show, handleClose }) {
 
     const modalRef = useRef(null);
 
-    // useEffect(() => {
-    //     // Add a click event listener to the document body
-    //     const handleOutsideClick = (event) => {
-    //       if (modalRef.current && !modalRef.current.contains(event.target)) {
-    //         handleClose();
-    //       }
-    //     };
-    
-    //     if (show) {
-    //       document.body.addEventListener('click', handleOutsideClick);
-    //     }
-    
-    //     return () => {
-    //       // Remove the click event listener when the component unmounts
-    //       document.body.removeEventListener('click', handleOutsideClick);
-    //     };
-    //   }, [show, handleClose]);
-
-
-
   return (
     <div
       className={`modal fade custom-dialog ${show ? 'show' : ''}`}

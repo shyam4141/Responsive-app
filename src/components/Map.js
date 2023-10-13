@@ -8,6 +8,8 @@ import {
 } from "react-google-maps";
 import Autocomplete from "react-google-autocomplete";
 import Geocode from "react-geocode";
+import { connect } from 'react-redux';
+import { setLatitude, setLongitude } from '../redux/actions/contactAction';
 
 Geocode.setApiKey("AIzaSyA1eL5WysMmFb7if7R2HmUUC5PPva7vkvo");
 Geocode.enableDebug();
@@ -66,17 +68,18 @@ class Map extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    if (
-      this.state.markerPosition.lat !== this.props.center.lat ||
-      this.state.address !== nextState.address ||
-      this.state.city !== nextState.city ||
-      this.state.area !== nextState.area ||
-      this.state.state !== nextState.state
-    ) {
-      return true;
-    } else if (this.props.center.lat === nextProps.center.lat) {
-      return false;
-    }
+    // if (
+    //   this.state.markerPosition.lat !== this.props.center.lat ||
+    //   this.state.address !== nextState.address ||
+    //   this.state.city !== nextState.city ||
+    //   this.state.area !== nextState.area ||
+    //   this.state.state !== nextState.state ||
+    //   this.state.mapPosition.lat !== this.props.center.lat
+    // ) {
+    //   return true;
+    // } else if (this.props.center.lat === nextProps.center.lat) {
+    //   return false;
+    // }
   }
   /**
    * Get the city and set the city input value to the one selected
@@ -190,24 +193,36 @@ class Map extends Component {
     console.log("event", event);
     let newLat = event.latLng.lat(),
       newLng = event.latLng.lng();
-    Geocode.fromLatLng(newLat, newLng).then(
-      (response) => {
-        const address = response.results[0].formatted_address;
-        let addressArray = response.results[0].address_components,
-          city = this.getCity(addressArray),
-          area = this.getArea(addressArray),
-          state = this.getState(addressArray);
-        this.setState({
-          address: address ? address : "",
-          area: area ? area : "",
-          city: city ? city : "",
-          state: state ? state : ""
+      console.log("event lat long", newLat, newLng);
+      this.setState({
+        mapPosition: {
+          lat: newLat,
+          lng: newLng
+        }
         });
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+
+        console.log("event lat long", newLat, newLng);
+        // localStorage.setItem({"lat value" : newLat},{"lon value" : newLng})
+        this.props.setLatitude(newLat);
+        this.props.setLongitude(newLng);
+    // Geocode.fromLatLng(newLat, newLng).then(
+    //   (response) => {
+    //     const address = response.results[0].formatted_address;
+    //     let addressArray = response.results[0].address_components,
+    //       city = this.getCity(addressArray),
+    //       area = this.getArea(addressArray),
+    //       state = this.getState(addressArray);
+    //     this.setState({
+    //       address: address ? address : "",
+    //       area: area ? area : "",
+    //       city: city ? city : "",
+    //       state: state ? state : ""
+    //     });
+    //   },
+    //   (error) => {
+    //     console.error(error);
+    //   }
+    // );
   };
   render() {
     const AsyncMap = withScriptjs(
@@ -233,7 +248,7 @@ class Map extends Component {
           />
           <Marker />
           {/* InfoWindow on top of marker */}
-          <InfoWindow
+          {/* <InfoWindow
             onClose={this.onInfoWindowClose}
             position={{
               lat: this.state.markerPosition.lat + 0.0018,
@@ -245,7 +260,7 @@ class Map extends Component {
                 {this.state.address}
               </span>
             </div>
-          </InfoWindow>
+          </InfoWindow> */}
         </GoogleMap>
         </div>
       ))
@@ -253,6 +268,7 @@ class Map extends Component {
     let map;
     if (this.props.center.lat !== undefined) {
       map = (
+        <>
         <div style={{position:'revert'}}>
           
           <AsyncMap
@@ -262,6 +278,9 @@ class Map extends Component {
             mapElement={<div style={{ height: `100%` }} />}
           />
         </div>
+
+       
+        </>
       );
     } else {
       map = <div style={{ height: this.props.height, position:'revert' }} />;
@@ -269,4 +288,10 @@ class Map extends Component {
     return map;
   }
 }
-export default Map;
+
+const mapStateToProps = (state) => ({
+  locationDetails: state.locationDetails,
+});
+
+export default connect(mapStateToProps, { setLatitude,setLongitude })(Map);
+// export default Map;

@@ -7,7 +7,9 @@ import {
   CLEAR_CONTACT,
   DELETE_SELECTED_CONTACTS,
   SET_ROLE,
-  FEEDBACK_SUBMIT
+  FEEDBACK_SUBMIT,
+  SET_LATITUDE,
+  SET_LONGITUDE
 } from "../constant/types";
 
 const intialState = {
@@ -246,7 +248,9 @@ const intialState = {
   ],
   contact: null,
   selectedContacts: [],
-  feedbackDetails:[]
+  feedbackDetails:[],
+  latitude:'',
+  longitude:''
 };
 
 export const contactReducer = (state = intialState, action) => {
@@ -268,6 +272,19 @@ export const contactReducer = (state = intialState, action) => {
           ...state,
           feedbackDetails : [action.payload, ...state.feedbackDetails],
         };
+
+        case SET_LATITUDE:
+          return {
+            ...state,
+            latitude: [action.payload],
+          };
+
+          case SET_LONGITUDE:
+            return {
+              ...state,
+              longitude: [action.payload],
+            };
+    
 
     case GET_CONTACT:
       let arr = state.contacts.filter(
