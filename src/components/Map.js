@@ -3,13 +3,11 @@ import {
   withGoogleMap,
   GoogleMap,
   withScriptjs,
-  InfoWindow,
-  Marker
+  Marker,
 } from "react-google-maps";
-import Autocomplete from "react-google-autocomplete";
 import Geocode from "react-geocode";
-import { connect } from 'react-redux';
-import { setLatitude, setLongitude } from '../redux/actions/contactAction';
+import { connect } from "react-redux";
+import { setLatitude, setLongitude } from "../redux/actions/contactAction";
 
 Geocode.setApiKey("AIzaSyA1eL5WysMmFb7if7R2HmUUC5PPva7vkvo");
 Geocode.enableDebug();
@@ -17,49 +15,17 @@ class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      address: "",
-      city: "",
-      area: "",
-      state: "",
       mapPosition: {
         lat: this.props.center.lat,
-        lng: this.props.center.lng
+        lng: this.props.center.lng,
       },
       markerPosition: {
         lat: this.props.center.lat,
-        lng: this.props.center.lng
-      }
+        lng: this.props.center.lng,
+      },
     };
   }
-  /**
-   * Get the current address from the default map position and set those values in the state
-   */
-  componentDidMount() {
-    Geocode.fromLatLng(
-      this.state.mapPosition.lat,
-      this.state.mapPosition.lng
-    ).then(
-      (response) => {
-        const address = response.results[0].formatted_address,
-          addressArray = response.results[0].address_components,
-          city = this.getCity(addressArray),
-          area = this.getArea(addressArray),
-          state = this.getState(addressArray);
 
-        console.log("city", city, area, state);
-
-        this.setState({
-          address: address ? address : "",
-          area: area ? area : "",
-          city: city ? city : "",
-          state: state ? state : ""
-        });
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
   /**
    * Component should only update ( meaning re-render ), when the user selects the address, or drags the pin
    *
@@ -67,82 +33,9 @@ class Map extends Component {
    * @param nextState
    * @return {boolean}
    */
-  shouldComponentUpdate(nextProps, nextState) {
-    // if (
-    //   this.state.markerPosition.lat !== this.props.center.lat ||
-    //   this.state.address !== nextState.address ||
-    //   this.state.city !== nextState.city ||
-    //   this.state.area !== nextState.area ||
-    //   this.state.state !== nextState.state ||
-    //   this.state.mapPosition.lat !== this.props.center.lat
-    // ) {
-    //   return true;
-    // } else if (this.props.center.lat === nextProps.center.lat) {
-    //   return false;
-    // }
-  }
+  shouldComponentUpdate(nextProps, nextState) {}
+
   /**
-   * Get the city and set the city input value to the one selected
-   *
-   * @param addressArray
-   * @return {string}
-   */
-  getCity = (addressArray = []) => {
-    let city = "";
-    for (let i = 0; i < addressArray.length; i++) {
-      if (
-        addressArray[i].types[0] &&
-        "administrative_area_level_2" === addressArray[i].types[0]
-      ) {
-        city = addressArray[i].long_name;
-        return city;
-      }
-    }
-  };
-  /**
-   * Get the area and set the area input value to the one selected
-   *
-   * @param addressArray
-   * @return {string}
-   */
-  getArea = (addressArray = []) => {
-    let area = "";
-    for (let i = 0; i < addressArray.length; i++) {
-      if (addressArray[i].types[0]) {
-        for (let j = 0; j < addressArray[i].types.length; j++) {
-          if (
-            "sublocality_level_1" === addressArray[i].types[j] ||
-            "locality" === addressArray[i].types[j]
-          ) {
-            area = addressArray[i].long_name;
-            return area;
-          }
-        }
-      }
-    }
-  };
-  /**
-   * Get the address and set the address input value to the one selected
-   *
-   * @param addressArray
-   * @return {string}
-   */
-  getState = (addressArray) => {
-    let state = "";
-    for (let i = 0; i < addressArray.length; i++) {
-      for (let i = 0; i < addressArray.length; i++) {
-        if (
-          addressArray[i].types[0] &&
-          "administrative_area_level_1" === addressArray[i].types[0]
-        ) {
-          state = addressArray[i].long_name;
-          return state;
-        }
-      }
-    }
-  };
-  /**
-   * And function for city,state and address input
    * @param event
    */
   onChange = (event) => {
@@ -158,33 +51,10 @@ class Map extends Component {
    * When the user types an address in the search box
    * @param place
    */
-  onPlaceSelected = (place) => {
-    const address = place.formatted_address,
-      addressArray = place.address_components,
-      city = this.getCity(addressArray),
-      area = this.getArea(addressArray),
-      state = this.getState(addressArray),
-      latValue = place.geometry.location.lat(),
-      lngValue = place.geometry.location.lng();
-    // Set these values in the state.
-    this.setState({
-      address: address ? address : "",
-      area: area ? area : "",
-      city: city ? city : "",
-      state: state ? state : "",
-      markerPosition: {
-        lat: latValue,
-        lng: lngValue
-      },
-      mapPosition: {
-        lat: latValue,
-        lng: lngValue
-      }
-    });
-  };
+
   /**
    * When the marker is dragged you get the lat and long using the functions available from event object.
-   * Use geocode to get the address, city, area and state from the lat and lng positions.
+   * Use geocode to get the lat and lng positions.
    * And then set those values in the state.
    *
    * @param event
@@ -193,75 +63,41 @@ class Map extends Component {
     console.log("event", event);
     let newLat = event.latLng.lat(),
       newLng = event.latLng.lng();
-      console.log("event lat long", newLat, newLng);
-      this.setState({
-        mapPosition: {
-          lat: newLat,
-          lng: newLng
-        }
-        });
+    console.log("event lat long", newLat, newLng);
+    this.setState({
+      mapPosition: {
+        lat: newLat,
+        lng: newLng,
+      },
+    });
 
-        console.log("event lat long", newLat, newLng);
-        // localStorage.setItem({"lat value" : newLat},{"lon value" : newLng})
-        this.props.setLatitude(newLat);
-        this.props.setLongitude(newLng);
-    // Geocode.fromLatLng(newLat, newLng).then(
-    //   (response) => {
-    //     const address = response.results[0].formatted_address;
-    //     let addressArray = response.results[0].address_components,
-    //       city = this.getCity(addressArray),
-    //       area = this.getArea(addressArray),
-    //       state = this.getState(addressArray);
-    //     this.setState({
-    //       address: address ? address : "",
-    //       area: area ? area : "",
-    //       city: city ? city : "",
-    //       state: state ? state : ""
-    //     });
-    //   },
-    //   (error) => {
-    //     console.error(error);
-    //   }
-    // );
+    console.log("event lat long", newLat, newLng);
+    this.props.setLatitude(newLat);
+    this.props.setLongitude(newLng);
   };
   render() {
     const AsyncMap = withScriptjs(
       withGoogleMap((props) => (
-        <div style={{position:'revert'}}>
-        <GoogleMap
-          defaultZoom={this.props.zoom}
-          defaultCenter={{
-            lat: this.state.mapPosition.lat,
-            lng: this.state.mapPosition.lng
-          }}
-        >
-          {/*Marker*/}
-          <Marker
-            google={this.props.google}
-            name={"Dolores park"}
-            draggable={true}
-            onDragEnd={this.onMarkerDragEnd}
-            position={{
-              lat: this.state.markerPosition.lat,
-              lng: this.state.markerPosition.lng
-            }}
-          />
-          <Marker />
-          {/* InfoWindow on top of marker */}
-          {/* <InfoWindow
-            onClose={this.onInfoWindowClose}
-            position={{
-              lat: this.state.markerPosition.lat + 0.0018,
-              lng: this.state.markerPosition.lng
+        <div style={{ position: "revert" }}>
+          <GoogleMap
+            defaultZoom={this.props.zoom}
+            defaultCenter={{
+              lat: this.state.mapPosition.lat,
+              lng: this.state.mapPosition.lng,
             }}
           >
-            <div>
-              <span style={{ padding: 0, margin: 0 }}>
-                {this.state.address}
-              </span>
-            </div>
-          </InfoWindow> */}
-        </GoogleMap>
+            <Marker
+              google={this.props.google}
+              name={"Dolores park"}
+              draggable={true}
+              onDragEnd={this.onMarkerDragEnd}
+              position={{
+                lat: this.state.markerPosition.lat,
+                lng: this.state.markerPosition.lng,
+              }}
+            />
+            <Marker />
+          </GoogleMap>
         </div>
       ))
     );
@@ -269,21 +105,18 @@ class Map extends Component {
     if (this.props.center.lat !== undefined) {
       map = (
         <>
-        <div style={{position:'revert'}}>
-          
-          <AsyncMap
-            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx3usH0OxGDYgBSR0jzMe3H2DwJ3Ia8Rc&libraries=places"
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: this.props.height }} />}
-            mapElement={<div style={{ height: `100%` }} />}
-          />
-        </div>
-
-       
+          <div style={{ position: "revert" }}>
+            <AsyncMap
+              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx3usH0OxGDYgBSR0jzMe3H2DwJ3Ia8Rc&libraries=places"
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div style={{ height: this.props.height }} />}
+              mapElement={<div style={{ height: `100%` }} />}
+            />
+          </div>
         </>
       );
     } else {
-      map = <div style={{ height: this.props.height, position:'revert' }} />;
+      map = <div style={{ height: this.props.height, position: "revert" }} />;
     }
     return map;
   }
@@ -293,5 +126,5 @@ const mapStateToProps = (state) => ({
   locationDetails: state.locationDetails,
 });
 
-export default connect(mapStateToProps, { setLatitude,setLongitude })(Map);
+export default connect(mapStateToProps, { setLatitude, setLongitude })(Map);
 // export default Map;
