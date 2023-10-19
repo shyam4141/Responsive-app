@@ -29,31 +29,51 @@ function ViewMap() {
 
   return (
     <div className="App">
-      <header className="App-header mt-2">
-      <button className="fetch-user-button" onClick={handleFetchUsers}>
+       <button className="fetch-user-button" onClick={handleFetchUsers}>
             Fetch Users
           </button>
-      <div>
-       <p> Latitude : {lat}</p>
-       <p> Longitude : {lon}</p>
-         
+      <p>Drag the marker and point to any other location to get latitude and longitude particular to that location</p>
+      <header className="App-header mt-2">
+     
+      <div>    
         </div>
-       
         {/* <button className="btn btn-primary" onClick={handleShowMapDialog}>
           Open Map
         </button> */}
       </header>
       <main>
         <MapDialog show={showMapDialog} handleClose={handleCloseMapDialog}/>
+        <p> Latitude : {lat}</p>
+       <p> Longitude : {lon}</p>
       </main>
-      {users?.map((item)=>{
+     {users.length > 0 ? <>
+      <table className='table-bordered table-striped'>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Distance</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {users?.map((item) => (
+          <tr key={item.username}>
+            <td>{item.username}</td>
+            <td>{item.distance}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+     </> : ''} 
+   
+      {/* {users?.map((item)=>{
          return (
           <>
-         <div>{item.username}</div>
-         <div>{item.distance}</div>
+         <div>User name : {item.username}</div>
+         <div>Distance : {item.distance}</div>
          </>
          )
-      })}
+      })} */}
     </div>
   );
 }
